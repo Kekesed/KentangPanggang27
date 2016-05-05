@@ -2,7 +2,6 @@
 Open Source Instagram Tool, yang pasti buat dapetin OAuth Instagram, trus massukin ke dalem framework biar bisa dipake semuanya. Apliksi bisa dipasang buat yang ngerti aja sih.
 
 Gratis... tapi ya... mohon donasinya yha :'
-Buat donasi mohon kontak iam(at)kekesed(dod)id. Terima kasiihh >.<
 
 ## Pasang
 Nggak butuh DB, yang penting butuh APIKey sama APIScretnya Aplikasi Instagram kamu.
@@ -13,3 +12,5 @@ Nggak, SGB bukan grup yang engga engga kok .-. kamu aja yang nganggepnya gitu. S
 
 sip sip!
 
+## Donasi
+Buat donasi mohon kontak iam(at)kekesed(dod)id. Terima kasiihh >.<
