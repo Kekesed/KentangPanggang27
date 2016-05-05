@@ -1,0 +1,18 @@
+<nav class="navigation-bar dark">
+  <div class="container">
+    <nav class="navigation-bar-content">
+        <a class="element" href="{{'root'|alias}}">KentangPanggang27 <small>v1.0</small></a>
+        <item class="element-divider"></item>
+        <a href="{{'about'|alias}}" class="element">Tentang</a>
+
+        <check if="{{isset(@SESSION.user)}}">
+          <div class="element place-right">
+            <a class="dropdown-toggle" href="javascript:;"><span class="icon-user-2"></span> {{@SESSION.user->username}}</a>
+            <ul class="dropdown-menu" data-role="dropdown">
+                <li><a href="{{'root'|alias}}?revoke">Revoke Session</a></li>
+            </ul>
+          </div>
+        </check>
+    </nav>
+  </div>
+</nav>

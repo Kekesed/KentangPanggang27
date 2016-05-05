@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="grid fluid">
+    <div class="row">
+      <div class="span6">
+        <h3>Tag Loader</h3>
+        <p>Aplikasi ini akan meload foto dengan tag yang diberikan. Kami hanya bisa meload 1 tag untuk sekarang ini dan hanya gambar yang dapat kami load.
+        Aplikasi ini tidak akan mendownload media berupa video, dan membuat zip file dari gambar gambar yang telah terdownload.</p>
+        <p>Berdasarkan peraturan yang diberikan Instagram, anda hanya dapat menggunakan 500 request per jam untuk ID normal, dan 5000 request per jam untuk ID yang sudah terverifikasi.
+        mohon bersabar karena kami tidak dapat melakukan kedua hal tersebut dengan mudah. Ini akan berlangsung mudah.</p>
+      </div>
+      <div class="span6">
+        <check if="{{\Flash::instance()->hasMessages()}}">
+          <repeat group="{{\Flash::instance()->getMessages()}}" value="{{@Pesan}}">
+            <p class="{{'fg-' . (@Pesan.status == 'error'?'red':'blue')}}">{{@Pesan.text}}</p>
+          </repeat>
+        </check>
+        <form method="post">
+          <label>Hashtag yang akan dicari
+            <div class="input-control text">
+              <input type="text" name="tag" placeholder="Tag tanpa Hastag(#) dan Spasi." value="" autocomplete="off">
+            </div>
+          </label>
+          <input type="hidden" name="token" value="{{@form.token}}"/>
+          <input type="submit" class="primary large" value="Load Info"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

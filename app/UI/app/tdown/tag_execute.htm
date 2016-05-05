@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="grid fluid">
+    <div class="row">
+      <div class="span9" id="logger">
+        <h2>Log</h2>
+      </div>
+      <div class="span3 bg-blueLight">
+        <p>Total Foto #{{@SESSION.tdown.recent}}</p>
+        <p class="header">{{@tdown.hasil}}</p>
+        <button class="bg-orange fg-white large" id="hajar">Hajar!</button> <a class="button" href="{{'app', 'id=tdown' | alias}}">Back</a>
+        <script>
+        $(document).ready(function(e){
+          var x = {
+            post: function(alamat, data) {
+              return new Promise(function(ok,gkk){
+                $.ajax({
+                  url: alamat,
+                  method:'post',
+                  data:data
+                }).always(function(data){
+                  ok(data);
+                }).fail(function(data){
+                  gkk(data);
+                });
+              });
+            }
+          }
+          function Yuku(hasil){
+            hasil = hasil==undefined?0:hasil;
+            $('#logger').append($('<p/>', {class:'fg-green', text:'Requesting...'}));
+            $('#hajar').attr('disabled', true);
+            x.post('{{'app_page', 'id=tdown,page=gaplok'|alias}}', {}).then(function(d){
+                if(d.status == 'ok') {
+                  $('#logger').append($('<p/>', {class:'fg-blue', text:'Downloaded ' + d.total +'. Waiting for next...'}));
+                  return Yuku(hasil + d.total);
+                } else {
+                  $('#hajar').attr('disabled', false);
+                  $('#logger').append($('<p/>', {class:'fg-blue', text:'Request ended. Total Downloaded: ' + hasil + '. Click Download to download the zip.'}));
+                  $('#hajar').text('Download ZIP');
+                  return hasil;
+                }
+            }).catch(function(data){
+              $('#logger').append($('<p/>', {class:'fg-orange', text:'Fail to request... something happend with your connection.'}));
+              $('#hajar').attr('disabled', false);
+            });
+          }
+          $('#hajar').click(function(e){
+            if($('#hajar').text() != 'Download ZIP') {
+              Yuku();
+            } else {
+              $('#logger').append($('<p/>', {class:'fg-orange', text:'Trying to packing your data into a zip....'}));
+              $('#hajar').attr('disabled', true);
+              x.post('{{'app_page', 'id=tdown,page=packup'|alias}}').then(function(e){
+                if(e.status == 'ok') {
+                  $('#logger').append(
+                    $('<p/>', {class:'fg-darkCobalt', text:'Your download link ready!'}).append(
+                      $('<a/>', {text:'Download!', href:'{{'app_page', 'id=tdown,page=file'|alias}}?'+e.id, class:'button bg-darkCobalt fg-white'})
+                    )
+                  );
+                } else {
+                  $('#logger').append($('<p/>', {class:'fg-orange', text:'Failed to Pack. Press Download again to repack.'}));
+                  $('#hajar').attr('disabled', false);
+                }
+              }).catch(function(e){
+                $('#logger').append($('<p/>', {class:'fg-red', text:'Error occuread. Check the console.'}));
+                console.error('Error!');
+                console.log(e);
+                $('#hajar').attr('disabled', false);
+              });
+            }
+          });
+        });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

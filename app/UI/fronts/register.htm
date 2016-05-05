@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="grid">
+    <div class="row">
+      <div class="span12" style="min-height:30px">&nbsp;</div>
+    </div>
+    <div class="row bg-grayLighter">
+      <div class="span8 bg-white padding20">
+        <h3>Hai <b>Bosq</b>!</h3>
+        <p>Keknya lu belom massukin <b>Instagram Application ID</b> deh .-.<br>
+        Mestinya di massukin bang... butuh panduan registernye? <a href="{{'help','id=daftarig'|alias}}">Klik di sini</a></p>
+        <form method="post">
+          <check if="{{\Flash::instance()->hasMessages()}}">
+            <repeat group="{{\Flash::instance()->getMessages()}}" value="{{@Pesan}}">
+              <p class="{{'fg-' . (@Pesan.status == 'error'?'red':'blue')}}">{{@Pesan.text}}</p>
+            </repeat>
+          </check>
+          <label>API Key
+            <div class="input-control text">
+              <input type="text" value="" placeholder="App Key" name="key"/>
+            </div>
+          </label>
+          <label>API Secret
+            <div class="input-control text">
+              <input type="text" value="" placeholder="App Secret" name="secret"/>
+            </div>
+          </label>
+          <input type="hidden" value="{{@cftoken}}" name="token"/>
+          <input type="submit" value="Joss!" class="button primary"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
