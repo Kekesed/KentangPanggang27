@@ -1,3 +1,4 @@
+![SS About](https://cloud.githubusercontent.com/assets/12927266/15050007/8553863a-131b-11e6-9b06-e28fe831cf1c.png)
 # KentangPanggang27
 Open Source Instagram Tool, yang pasti buat dapetin OAuth Instagram, trus massukin ke dalem framework biar bisa dipake semuanya. Apliksi bisa dipasang buat yang ngerti aja sih.
 
