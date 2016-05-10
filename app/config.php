@@ -1,6 +1,6 @@
 <?php
 \F3::mset([
-  'DEBUG'=>3,
+  'DEBUG'=>0,
   "UI"=>__DIR__ . "/UI/",
   "AUTOLOAD" => __DIR__ . "/;" . __DIR__ . "/Lib/;" . __DIR__ . "/f3/burger/",
   "TEMP" => __DIR__ . "/tmp/",
